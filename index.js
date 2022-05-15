@@ -16,15 +16,42 @@ const questions = [
     'Do you want to add custom badges ?',
     'Features (Required)',
     'How to Contribute',
-    'How to test the application ?'
+    'How to test the application ?',
+    'What is your name',
+    'What is your GitHub account',
+    'What is your email'
 ]
 
 
 const promptProject = () => {
     return inquirer.prompt([
-        {
+        {            
             type: 'input',
-            name: 'projectTitle',
+            name: 'name',
+            message: questions[11],
+            validate: questionInput => {
+                if (questionInput) { return true; } else { console.log('Please enter your Name!'); return false; }
+            }
+        },
+        {            
+            type: 'input',
+            name: 'githubAccount',
+            message: questions[12],
+            validate: questionInput => {
+                if (questionInput) { return true; } else { console.log('Please enter your Github Account!'); return false; }
+            }
+        },
+        {            
+            type: 'input',
+            name: 'email',
+            message: questions[13],
+            validate: questionInput => {
+                if (questionInput) { return true; } else { console.log('Please enter your email!'); return false; }
+            }
+        },
+        {            
+            type: 'input',
+            name: 'title',
             message: questions[0],
             validate: questionInput => {
                 if (questionInput) { return true; } else { console.log('Please enter your project title!'); return false; }
@@ -60,7 +87,7 @@ const promptProject = () => {
             message: questions[5],
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
             message: questions[6],
             choices: ['GNU, General Public License v3.0', 'MIT License', 'ISC License']
@@ -93,13 +120,12 @@ const promptProject = () => {
             type: 'checkbox',
             name: 'tableOfContents',
             message: questions[2],
-            choices: ['Installation', 'Usage', 'Credits', 'License', 'Badges', 'Features', 'How to Contribute', 'Test']
+            choices: ['Installation', 'Usage', 'Credits', 'License', 'Badges', 'Features', 'Test']
         },
     ])
 }
 
 // Function to write README file
-
 function writeToFile(data) {
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/README.md', data, err => {
@@ -126,5 +152,6 @@ function init() {
             return writeToFile(pageREADME);
         })
 }
+
 
 init();
