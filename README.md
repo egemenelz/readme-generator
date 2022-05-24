@@ -8,7 +8,7 @@
 
 ## Description
 
-This project helps developers create README.MD without spending a lot of time on it. There is a questionnaire, you can answer them and build your README.MD file qu ickly.
+This project helps developers create README.MD without spending a lot of time on it. There is a questionnaire, you can answer them and build your README.MD file quickly.
 
 ## Table of Contents
 
